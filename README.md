@@ -1,1 +1,1 @@
-![](ui-ecommerce-main\assets\images\MOCKUP E-COMMERCE.jpg)
+![](assets\images\MOCKUP%20E-COMMERCE.jpg)
