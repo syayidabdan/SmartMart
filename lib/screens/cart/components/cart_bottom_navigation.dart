@@ -1,7 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:ui_ecommerce/components/my_default_button.dart';
 import 'package:ui_ecommerce/size_config.dart';
+import 'package:ui_ecommerce/state_managements/cart_provider.dart';
 
 class CartBottomNavigation extends StatelessWidget {
   const CartBottomNavigation({
@@ -57,21 +61,30 @@ class CartBottomNavigation extends StatelessWidget {
           SizedBox(height: getPropScreenWidth(20)),
           Row(
             children: [
-              const Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(text: "Total:\n"),
-                    TextSpan(
-                      text: "\$337.15",
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ),
-                  ],
+              Consumer<CartProvider>(
+                builder: (context, cart, child) =>
+                  Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: "Total:\n"),
+                      TextSpan(
+                        text: "\$ ${cart.totalPrice}",
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const Spacer(),
+              Consumer<CartProvider>(
+                builder: (context, cart, child) =>
               SizedBox(
                 width: getPropScreenWidth(190),
-                child: MyDefaultButton(text: "Check Out", press: (){}))
+                child: MyDefaultButton(text: "Check Out", press: (){
+                  cart.clearCart();
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Check out success")));
+                }))
+              ),
             ],
           ),
         ],

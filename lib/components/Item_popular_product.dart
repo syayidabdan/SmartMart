@@ -1,9 +1,11 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ui_ecommerce/constant.dart';
 import 'package:ui_ecommerce/model/products.dart';
 import 'package:ui_ecommerce/size_config.dart';
+import 'package:ui_ecommerce/state_managements/favorite_provider.dart';
 
 class ItemPopularProduct extends StatelessWidget {
   const ItemPopularProduct({
@@ -41,7 +43,6 @@ class ItemPopularProduct extends StatelessWidget {
               SizedBox(height: getPropScreenHeight(15)),
               Text(
                 product.title,
-                style: const TextStyle(color: Colors.black),
               ),
               const Spacer(),
               Row(
@@ -52,7 +53,7 @@ class ItemPopularProduct extends StatelessWidget {
                     style: TextStyle(
                         fontSize: getPropScreenWidth(18),
                         fontWeight: FontWeight.w600,
-                        color: kPrimaryColor),
+                        color: const Color.fromARGB(255, 129, 161, 161)),
                   ),
                   Container(
                     height: getPropScreenWidth(28),
@@ -64,14 +65,22 @@ class ItemPopularProduct extends StatelessWidget {
                           : kSecondaryColor.withOpacity(0.2),
                       shape: BoxShape.circle,
                     ),
-                    child: Center(
-                      child: Icon(
-                        Icons.favorite,
-                        color: product.isFavourite == true
-                            ? Colors.red
-                            : kSecondaryColor,
-                        size: getPropScreenWidth(13),
-                      ),
+                    child: Consumer<FavouriteProvider>(
+                      builder: (context, favourites, child) =>
+                       GestureDetector(
+                        onTap: () {
+                          favourites.toogleFavouriteStatus(product.id);
+                        },
+                         child: Center(
+                          child: Icon(
+                            Icons.favorite,
+                            color: product.isFavourite
+                                ? Colors.red
+                                : kSecondaryColor,
+                            size: getPropScreenWidth(13),
+                          ),
+                                               ),
+                       ),
                     ),
                   )
                 ],

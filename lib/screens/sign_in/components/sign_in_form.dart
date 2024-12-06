@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ui_ecommerce/components/costum_suffix_icon.dart';
 import 'package:ui_ecommerce/components/error_form.dart';
 import 'package:ui_ecommerce/components/my_default_button.dart';
@@ -6,6 +7,7 @@ import 'package:ui_ecommerce/constant.dart';
 import 'package:ui_ecommerce/screens/forgot_password/forgot_password_screen.dart';
 import 'package:ui_ecommerce/screens/login_success/login_success_screen.dart';
 import 'package:ui_ecommerce/size_config.dart';
+import 'package:ui_ecommerce/state_managements/auth_provider.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -43,6 +45,7 @@ class _SignInFormState extends State<SignInForm> {
               }
 
               if (errors.isEmpty) {
+                Provider.of<AuthProvider>(context, listen: false).setAuth(true, email: email);
                 Navigator.pushNamed(context, LoginSuccessScreen.routeName);
               }
               
@@ -65,7 +68,7 @@ class _SignInFormState extends State<SignInForm> {
           },
           activeColor: kPrimaryColor,
         ),
-        const Text("Remember me", style: TextStyle(color: Colors.black),),
+        const Text("Remember me"),
         const Spacer(),
         GestureDetector(
           onTap: () {
@@ -75,7 +78,6 @@ class _SignInFormState extends State<SignInForm> {
             "Forgot Password",
             style: TextStyle(
               decoration: TextDecoration.underline,
-              color: Colors.black
             ),
           ),
         )

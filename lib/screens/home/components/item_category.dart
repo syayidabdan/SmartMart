@@ -22,7 +22,7 @@ class ItemCategory extends StatelessWidget {
             height: getPropScreenWidth(55),
             width: getPropScreenWidth(55),
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 25, 131, 131),
+                color: const Color.fromARGB(255, 54, 190, 214),
                 borderRadius: BorderRadius.circular(15)),
             child: SvgPicture.asset(icon, color: Colors.white,),
           ),

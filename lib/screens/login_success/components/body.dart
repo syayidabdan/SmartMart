@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_ecommerce/components/my_default_button.dart';
-import 'package:ui_ecommerce/screens/home/home_screen.dart';
+import 'package:ui_ecommerce/screens/home/components/home_screen.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
 class Body extends StatelessWidget {
@@ -23,8 +23,7 @@ class Body extends StatelessWidget {
             "Login Success",
             style: TextStyle(
                 fontSize: getPropScreenWidth(30),
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
+                fontWeight: FontWeight.bold),
           ),
           const Spacer(),
           SizedBox(

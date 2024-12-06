@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ui_ecommerce/components/my_default_button.dart';
 import 'package:ui_ecommerce/constant.dart';
-import 'package:ui_ecommerce/screens/home/home_screen.dart';
+import 'package:ui_ecommerce/screens/home/components/home_screen.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
 class OtpForm extends StatefulWidget {

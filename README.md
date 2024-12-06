@@ -1,3 +1,3 @@
-![](assets\images\MOCKUP%20E-COMMERCE.jpg)
+![](assets\images\mockup_e-commerce_update.png)
 
-<img src="assets\images\MOCKUP E-COMMERCE.jpg">
+<img src="assets\images\mockup_e-commerce_update.png">
